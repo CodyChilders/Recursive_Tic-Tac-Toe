@@ -95,7 +95,7 @@ class Board
     //check the 8 ways, 1 by 1 in a loop for each player
     for(int i = PLAYER1; i <= PLAYER2; i++)
     {
-      //stupid Processing doesn't do goto so I can't skip unnecessary if-statements :(
+      //stupid Processing doesn't do goto so I can't skip unnecessary if-statements without nesting them in elses :(
       //Rows
       if(board[0][0] == i && board[0][1] == i && board[0][2] == i)
         foundWin = true;
@@ -191,7 +191,7 @@ class Board
     }
   }
 
-  private void DrawLines()
+  protected void DrawLines()
   {
     stroke(0);
     strokeWeight(lineThickness);
