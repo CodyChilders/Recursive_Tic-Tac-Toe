@@ -56,8 +56,11 @@ class Board
         //also, only have to check one because the mouse can only click on one per turn
         if(mouseX < x + w * (i + 1) / 3 && mouseY < y + h * (j + 1) / 3)
         {
-          board[i][j] = (playerOnesTurn ? PLAYER1 : PLAYER2 );
-          playerOnesTurn = !playerOnesTurn;
+          if(board[i][j] == EMPTY)
+          {
+            board[i][j] = (playerOnesTurn ? PLAYER1 : PLAYER2 );
+            playerOnesTurn = !playerOnesTurn;
+          }
           return;
         }
       }
