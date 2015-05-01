@@ -1,6 +1,7 @@
 final int lineThickness = 2;
 final int distanceFromEdges = 5;
 final int oThickness = 35;
+final int xThickness = 30;
 
 class Board
 {
@@ -219,9 +220,25 @@ class Board
 
   protected void DrawX(int px, int py, int dx, int dy)
   {
-    fill(255, 0, 0);
     noStroke();
-    rect(px, py, dx, dy);
+    fill(255, 0, 0);
+    pushMatrix();
+    {
+      translate(px + dx / 2, py + dy / 2);
+      pushMatrix();
+      {
+        rotate(radians(45));
+        rect(-dx / 2, -xThickness / 2, dx, xThickness);
+      }
+      popMatrix();
+      pushMatrix();
+      {
+        rotate(radians(-45));
+        rect(-dx / 2, -xThickness / 2, dx, xThickness);
+      }
+      popMatrix();
+    }
+    popMatrix();
   }
 
   protected void DrawO(int px, int py, int dx, int dy)
