@@ -1,4 +1,4 @@
-final int boardDepth = 2;
+int boardDepth = 2;
 
 BoardContainer board;
 boolean playerOnesTurn = true;
@@ -9,7 +9,6 @@ color backgroundColor = color(255);
 void setup()
 {
   size(800, 800);
-  //board = new Board(topLeft, topRight, width, height);
   board = new BoardContainer(topLeft, topRight, width, height, boardDepth);
 }
 
@@ -25,3 +24,38 @@ void mousePressed(){
   loop();
 }
 
+void keyPressed()
+{
+  int val = 0;
+  switch(key)
+  {
+    //At levels above 3, it gets too small to be functional.  Maybe uncomment this and try on a jumbotron someday.
+    /*
+    case '0':
+      val++;
+    case '9':
+      val++;
+    case '8':
+      val++;
+    case '7':
+      val++;
+    case '6':
+      val++;
+    case '5':
+      val++;
+    case '4':
+      val++;
+    */
+    case '3':
+      val++;
+    case '2':
+      val++;
+    case '1':
+      val++;
+      break;
+    default: //No need to respond if it wasn't a number
+      return;
+  }
+  board = new BoardContainer(topLeft, topRight, width, height, val);
+  loop();
+}
