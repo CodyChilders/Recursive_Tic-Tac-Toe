@@ -8,7 +8,7 @@ color backgroundColor = color(255);
 
 void setup()
 {
-  size(800, 800);
+  size(950, 950);
   board = new BoardContainer(topLeft, topRight, width, height, boardDepth);
 }
 
