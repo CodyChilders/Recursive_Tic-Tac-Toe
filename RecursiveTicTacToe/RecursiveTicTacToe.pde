@@ -13,8 +13,10 @@ void draw()
 {
   background(255);
   board.Draw();
+  noLoop();
 }
 
 void mousePressed(){
   board.ProcessMouseEvent();
+  loop();
 }
