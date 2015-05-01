@@ -2,6 +2,7 @@ Board board;
 boolean playerOnesTurn = true;
 int topLeft = 0;
 int topRight = 0;
+color backgroundColor = color(255);
 
 void setup()
 {
@@ -11,7 +12,7 @@ void setup()
 
 void draw()
 {
-  background(255);
+  background(backgroundColor);
   board.Draw();
   noLoop();
 }
@@ -20,3 +21,4 @@ void mousePressed(){
   board.ProcessMouseEvent();
   loop();
 }
+

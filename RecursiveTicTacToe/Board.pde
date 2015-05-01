@@ -1,5 +1,6 @@
 final int lineThickness = 2;
 final int distanceFromEdges = 5;
+final int oThickness = 35;
 
 class Board
 {
@@ -178,7 +179,7 @@ class Board
           }
           else if(piece == PLAYER2)
           {
-            DrawY(px, py, dx, dy);
+            DrawO(px, py, dx, dy);
           }
           else
           {
@@ -212,7 +213,7 @@ class Board
     }
     else
     {
-      DrawY(x, y, w, h);
+      DrawO(x, y, w, h);
     }
   }
 
@@ -223,12 +224,13 @@ class Board
     rect(px, py, dx, dy);
   }
 
-  protected void DrawY(int px, int py, int dx, int dy)
+  protected void DrawO(int px, int py, int dx, int dy)
   {
-    fill(0, 0, 255);
     noStroke();
-    ellipseMode(CORNER);
-    ellipse(px, py, dx, dy);
+    fill(0, 0, 255);
+    ellipse(px + dx / 2, py + dy / 2, dx, dy);
+    fill(backgroundColor);
+    ellipse(px + dx / 2, py + dy / 2, dx - oThickness, dy - oThickness);
   }
   
   public int GetWinner()
