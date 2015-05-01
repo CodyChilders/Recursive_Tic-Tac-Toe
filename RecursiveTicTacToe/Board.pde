@@ -1,7 +1,7 @@
 final int lineThickness = 2;
-final int distanceFromEdges = 5;
-final int oThickness = 35;
-final int xThickness = 30;
+final int distanceFromEdges = 20;
+final int oThickness = 10;
+final int xThickness = 10;
 
 class Board
 {
@@ -245,9 +245,9 @@ class Board
   {
     noStroke();
     fill(0, 0, 255);
-    ellipse(px + dx / 2, py + dy / 2, dx, dy);
+    ellipse(px + dx / 2, py + dy / 2, dx - distanceFromEdges, dy - distanceFromEdges);
     fill(backgroundColor);
-    ellipse(px + dx / 2, py + dy / 2, dx - oThickness, dy - oThickness);
+    ellipse(px + dx / 2, py + dy / 2, dx - oThickness - distanceFromEdges, dy - oThickness - distanceFromEdges);
   }
   
   public int GetWinner()

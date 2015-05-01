@@ -19,7 +19,14 @@ class BoardContainer extends Board
     {
       for(int j = 0; j < board[i].length; j++)
       {
-        board[i][j] = new Board(x + i * w / 3, y + j * h / 3, w / 3, h / 3);
+        if(depth == 1)
+        {
+          board[i][j] = new Board(x + i * w / 3, y + j * h / 3, w / 3, h / 3);
+        }
+        else
+        {
+          board[i][j] = new BoardContainer(x + i * w / 3, y + j * h / 3, w / 3, h / 3, depth - 1);
+        }
       }
     }
   }
@@ -51,6 +58,16 @@ class BoardContainer extends Board
         board[i][j].Draw();
       }
     }
+  }
+  
+  private void CheckWin()
+  {
+    
+  }
+  
+  public int GetWinner()
+  {
+    return 0;
   }
 }
 
