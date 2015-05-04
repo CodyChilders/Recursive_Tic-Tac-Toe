@@ -246,8 +246,12 @@ class Board
     noStroke();
     fill(0, 0, 255);
     ellipse(px + dx / 2, py + dy / 2, dx - distanceFromEdges, dy - distanceFromEdges);
-    fill(backgroundColor);
-    ellipse(px + dx / 2, py + dy / 2, dx - oThickness - distanceFromEdges, dy - oThickness - distanceFromEdges);
+    //Don't draw the inside if it is too small
+    if(dx - oThickness - distanceFromEdges > 0)
+    {
+      fill(backgroundColor);
+      ellipse(px + dx / 2, py + dy / 2, dx - oThickness - distanceFromEdges, dy - oThickness - distanceFromEdges);
+    }
   }
   
   public int GetWinner()

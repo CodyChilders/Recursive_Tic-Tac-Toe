@@ -42,7 +42,7 @@ class BoardContainer extends Board
   public void ProcessMouseEvent()
   {
     //It is isn't in the bounds, no need to do anything
-    if (mouseX < x || mouseY < y || mouseX > x + w || mouseY > y + h)
+    if (mouseX < x || mouseY < y || mouseX > x + w || mouseY > y + h || movesPerformed == 9)
     {
       return;
     }
