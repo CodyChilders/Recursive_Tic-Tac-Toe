@@ -1,3 +1,7 @@
+// (w > h) should always be true
+static final int w = 1150;
+static final int h = 950;
+
 int boardDepth = 2;
 
 BoardContainer board;
@@ -9,15 +13,17 @@ color backgroundColor = color(255);
 
 void setup()
 {
-  size(950, 950);
+  size(w, h);
   smooth();
-  board = new BoardContainer(topLeft, topRight, width, height, boardDepth);
+  board = new BoardContainer(topLeft, topRight, min(w, h), min(w, h), boardDepth);
+  SetupHUD();
 }
 
 void draw()
 {
   background(backgroundColor);
   board.Draw();
+  DrawHUD();
   if(GameDone())
     DrawWinnerText();
   noLoop();
@@ -64,7 +70,7 @@ void keyPressed()
   //This prevents it from resetting the game if it is in the middle of one
   if(freshBoard || GameDone())
   {
-    board = new BoardContainer(topLeft, topRight, width, height, val);
+    board = new BoardContainer(topLeft, topRight, min(w, h), min(w, h), val);
     playerOnesTurn = true;
     freshBoard = true;
     loop();
