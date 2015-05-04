@@ -2,6 +2,7 @@ int boardDepth = 2;
 
 BoardContainer board;
 boolean playerOnesTurn = true;
+boolean freshBoard = true;
 int topLeft = 0;
 int topRight = 0;
 color backgroundColor = color(255);
@@ -17,10 +18,13 @@ void draw()
 {
   background(backgroundColor);
   board.Draw();
+  if(GameDone())
+    DrawWinnerText();
   noLoop();
 }
 
 void mousePressed(){
+  freshBoard = false;
   board.ProcessMouseEvent();
   loop();
 }
@@ -57,8 +61,13 @@ void keyPressed()
     default: //No need to respond if it wasn't a number
       return;
   }
-  board = new BoardContainer(topLeft, topRight, width, height, val);
-  playerOnesTurn = true;
-  loop();
+  //This prevents it from resetting the game if it is in the middle of one
+  if(freshBoard || GameDone())
+  {
+    board = new BoardContainer(topLeft, topRight, width, height, val);
+    playerOnesTurn = true;
+    freshBoard = true;
+    loop();
+  }
 }
 
