@@ -64,6 +64,27 @@ void DrawInstructions()
 
 void DrawWinnerText()
 {
-  println("DrawWinnerText not implemented");
+  int x = min(width, height) / 2;
+  int y = min(width, height) / 2;
+  fill(0);
+  textSize(100);
+  //This value will be reversed since the last move toggles it anyway
+  if(playerOnesTurn)
+  {
+    DrawPlayerTwoWins(x, y);
+  }
+  else
+  {
+    DrawPlayerOneWins(x, y);
+  }
 }
 
+void DrawPlayerOneWins(int x, int y)
+{
+  text("X wins!", x, y);
+}
+
+void DrawPlayerTwoWins(int x, int y)
+{
+  text("O wins!", x, y);
+}
