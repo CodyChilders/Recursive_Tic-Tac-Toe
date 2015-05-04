@@ -9,6 +9,7 @@ color backgroundColor = color(255);
 void setup()
 {
   size(950, 950);
+  smooth();
   board = new BoardContainer(topLeft, topRight, width, height, boardDepth);
 }
 
@@ -57,6 +58,7 @@ void keyPressed()
       return;
   }
   board = new BoardContainer(topLeft, topRight, width, height, val);
+  playerOnesTurn = true;
   loop();
 }
 

@@ -46,14 +46,41 @@ class BoardContainer extends Board
     {
       return;
     }
+    //See how many of the sub-games have been completed
+    int subGamesCompleteBeforeTurn = SubGamesWon();
     //Update the sub-boards
     for (int i = 0; i < board.length; i++) 
     {
       for (int j = 0; j < board[i].length; j++) 
       {
+        boolean preUpdate = playerOnesTurn;
         board[i][j].ProcessMouseEvent();
+        if(preUpdate != playerOnesTurn) //This detects when one of the lower calls actually made a change to the state of the board
+        {
+          if(SubGamesWon() != subGamesCompleteBeforeTurn)
+            movesPerformed++;
+          CheckForWin();
+          return;
+        }
       }
     }
+  }
+  
+  private int SubGamesWon()
+  {
+    //check through the array and see if this game has full cells
+    int gamesWon = 0;
+    for(int i = 0; i < board.length; i++)
+    {
+      for(int j = 0; j < board[i].length; j++)
+      {
+        if(board[i][j].GetWinner() != EMPTY)
+        {
+          gamesWon++;
+        }
+      }
+    }
+    return gamesWon;
   }
 
   public void Draw()
@@ -75,7 +102,7 @@ class BoardContainer extends Board
     }
   }
   
-  private void CheckWin()
+  private void CheckForWin()
   {
     //slightly optimize things for early game
     if(movesPerformed < 3)
