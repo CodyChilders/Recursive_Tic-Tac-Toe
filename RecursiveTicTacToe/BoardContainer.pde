@@ -2,18 +2,26 @@
 class BoardContainer extends Board
 {
   private Board[][] board;
+  private int depth;
 
   public BoardContainer()
   {
     board = null;
   }
   
-  public BoardContainer(int xx, int yy, int ww, int hh, int depth)
+  public BoardContainer(int xx, int yy, int ww, int hh, int recursionDepth)
   {
     x = xx;
     y = yy;
     w = ww;
     h = hh;
+    depth = recursionDepth;
+    movesPerformed = 0;
+    CreateNewBoard();
+  }
+  
+  private void CreateNewBoard()
+  {
     board = new Board[3][3];
     for(int i = 0; i < board.length; i++)
     {
@@ -50,13 +58,20 @@ class BoardContainer extends Board
 
   public void Draw()
   {
-    DrawLines();
-    for (int i = 0; i < board.length; i++) 
+    if(movesPerformed < 9)
     {
-      for (int j = 0; j < board[i].length; j++) 
+      DrawLines();
+      for (int i = 0; i < board.length; i++) 
       {
-        board[i][j].Draw();
+        for (int j = 0; j < board[i].length; j++) 
+        {
+          board[i][j].Draw();
+        }
       }
+    }
+    else
+    {
+      DrawWinner();
     }
   }
   
