@@ -17,6 +17,7 @@ void setup()
   smooth();
   board = new BoardContainer(topLeft, topRight, min(w, h), min(w, h), boardDepth);
   SetupHUD();
+  audio = new Audio();
 }
 
 void draw()
@@ -63,6 +64,10 @@ void keyPressed()
       val++;
     case '1':
       val++;
+      break;
+    case 'r':
+      val = 2;
+      freshBoard = true;
       break;
     default: //No need to respond if it wasn't a number
       return;
