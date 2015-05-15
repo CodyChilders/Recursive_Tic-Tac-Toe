@@ -82,3 +82,10 @@ void keyPressed()
   }
 }
 
+/*
+Feedback: 
+- Don't show the entire board at first, zoom out so they don't realize where they are in the meta game until too late
+- Don't reset in case of a cats game, instead resolve with an unsolved game
+- Reimplement in C++ using SFML, better as a resume piece in C++ than an appstore piece in Java/Unity
+*/
+
